@@ -13,7 +13,7 @@ double getdoubleinput(string message)
     return output;
 }
 
-char findgrade(int marks) // error is the error code
+char findgrade(int marks) // invalid is the error code
 {
     if (marks > 100 || marks < 0)
         return 'invalid';
