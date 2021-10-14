@@ -12,7 +12,7 @@ double getdoubleinput(string message)
     return output;
 }
 
-char findgrade(int marks) //error is the error code
+char findgrade(int marks) // error is the error code
 {
     if (marks > 100 || marks < 0)
         return 'invalid';
@@ -28,7 +28,7 @@ char findgrade(int marks) //error is the error code
         return 'E';
 }
 
-int findgpv(int marks) //99 is the error code
+int findgpv(int marks) // 99 is the error code
 {
     if (marks > 100 || marks < 0)
         return 99;
@@ -44,39 +44,42 @@ int findgpv(int marks) //99 is the error code
         return 0;
 }
 
-struct student
-{
-    int i;
-    double marks[];
-};
-
-
 int main()
 {
-    //double to int conversion done automatically here.
-    //No expected loss of data since no of subjects and marks are integers
+    // double to int conversion done automatically here.
+    // No expected loss of data since no of subjects and marks are integers
     int studentCount = getdoubleinput("Please enter the number of students");
     int subjectCount = getdoubleinput("Please enter how many subjects are to be taken");
 
-    for (int i = 0; i < studentCount; i++)
-    {
-        struct student *i; 
-    }
-    
+    double dataArray[studentCount][subjectCount];
 
     for (int i = 0; i < studentCount; i++)
     {
-        cout << "\tStudent " << i+1 << endl;
+        cout << "\tStudent " << i + 1 << endl;
         for (int j = 0; j < subjectCount; j++)
         {
-            cout << "Subject " << j+1 << endl;
-            student.marks[j];
+            cout << "Subject " << j + 1 << endl;
+            dataArray[i][j] = getdoubleinput("Please enter the marks of student");
         }
     }
 
-
-
-
-    system("pause");
+    for (int i = 0; i < studentCount; i++)
+    {
+        cout << "Student " << i + 1 << endl;
+        double gpvRunningTot = 0;
+        for (int j = 0; j < subjectCount; j++)
+        {
+            cout << "\tSubject " << j + 1 << ":"
+                 << "\tMarks : " << dataArray[i][j]
+                 << "\tGrade : " << findgrade(dataArray[i][j])
+                 << "\tGPV : " << findgpv(dataArray[i][j])
+                 << endl;
+            gpvRunningTot += (findgpv(dataArray[i][j]) * 2);
+        }
+        cout << "\tTotal GPV = " << gpvRunningTot
+             << "\tTotal Credits = " << subjectCount * 2
+             << "\tGPA = " << gpvRunningTot / (subjectCount * 2)
+             << endl;
+    }
     return 0;
 }
