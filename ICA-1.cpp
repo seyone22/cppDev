@@ -1,3 +1,4 @@
+//Author: S.G.Seyone (2019/ICT/46)
 #include <iostream>
 
 using namespace std;
